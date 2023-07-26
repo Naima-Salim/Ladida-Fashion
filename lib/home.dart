@@ -83,74 +83,91 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
           ),
-          CarouselSlider(
-            items: [
-              Container(
-                padding: const EdgeInsets.fromLTRB(1, 0, 1, 0),
-                margin: EdgeInsets.all(1),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10.0),
-                  image: DecorationImage(
-                    image: NetworkImage(
-                        "https://images.pexels.com/photos/3119215/pexels-photo-3119215.jpeg?auto=compress&cs=tinysrgb&w=600"),
-                    fit: BoxFit.scaleDown,
-                  ),
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.fromLTRB(1, 0, 1, 0),
-                margin: EdgeInsets.all(2.0),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10.0),
-                  image: DecorationImage(
-                    image: NetworkImage(
-                        "https://images.pexels.com/photos/3119215/pexels-photo-3119215.jpeg?auto=compress&cs=tinysrgb&w=600"),
-                    fit: BoxFit.scaleDown,
-                  ),
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.fromLTRB(1, 0, 1, 0),
-                margin: EdgeInsets.all(2.0),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10.0),
-                  image: DecorationImage(
-                    image: NetworkImage(
-                        "https://images.pexels.com/photos/3119215/pexels-photo-3119215.jpeg?auto=compress&cs=tinysrgb&w=600"),
-                    fit: BoxFit.scaleDown,
-                  ),
-                ),
-              ),
-            ],
-            options: CarouselOptions(
-              height: 380.0,
-              enlargeCenterPage: true,
-              autoPlay: true,
-              aspectRatio: 16 / 9,
-              autoPlayCurve: Curves.fastOutSlowIn,
-              enableInfiniteScroll: true,
-              autoPlayAnimationDuration: Duration(milliseconds: 1000),
-              viewportFraction: 0.8,
-            ),
-          ),
+		CarouselSlider(
+			items: [
+				
+				//1st Image of Slider
+				Container(
+				margin: EdgeInsets.all(6.0),
+				decoration: BoxDecoration(
+					borderRadius: BorderRadius.circular(8.0),
+					image: DecorationImage(
+					image: NetworkImage("https://images.pexels.com/photos/17644160/pexels-photo-17644160/free-photo-of-landscape.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"),
+					fit: BoxFit.cover,
+					),
+				),
+				),
+				
+				//2nd Image of Slider
+				Container(
+				margin: EdgeInsets.all(6.0),
+				decoration: BoxDecoration(
+					borderRadius: BorderRadius.circular(8.0),
+					image: DecorationImage(
+					image: NetworkImage("https://images.pexels.com/photos/17644160/pexels-photo-17644160/free-photo-of-landscape.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"),
+					fit: BoxFit.cover,
+					),
+				),
+				),
+				
+				//3rd Image of Slider
+				Container(
+				margin: EdgeInsets.all(6.0),
+				decoration: BoxDecoration(
+					borderRadius: BorderRadius.circular(8.0),
+					image: DecorationImage(
+					image: NetworkImage("https://images.pexels.com/photos/17644160/pexels-photo-17644160/free-photo-of-landscape.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"),
+					fit: BoxFit.cover,
+					),
+				),
+				),
+				
+				//4th Image of Slider
+				Container(
+				margin: EdgeInsets.all(6.0),
+				decoration: BoxDecoration(
+					borderRadius: BorderRadius.circular(8.0),
+					image: DecorationImage(
+					image: NetworkImage("https://images.pexels.com/photos/17644160/pexels-photo-17644160/free-photo-of-landscape.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"),
+					fit: BoxFit.cover,
+					),
+				),
+				),
+				
+				//5th Image of Slider
+				Container(
+				margin: EdgeInsets.all(6.0),
+				decoration: BoxDecoration(
+					borderRadius: BorderRadius.circular(8.0),
+					image: DecorationImage(
+					image: NetworkImage("https://images.pexels.com/photos/17644160/pexels-photo-17644160/free-photo-of-landscape.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"),
+					fit: BoxFit.cover,
+					),
+				),
+				),
 
-          Container(
-          margin: EdgeInsets.all(2.0),
-          width: 10,
-          height: 100,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: NetworkImage("https://images.pexels.com/photos/3119215/pexels-photo-3119215.jpeg?auto=compress&cs=tinysrgb&w=600"),
-              fit: BoxFit.fill,
-            ),
-          ),
-        ),
+		],
+			
+			//Slider Container properties
+			options: CarouselOptions(
+				height: 180.0,
+				enlargeCenterPage: true,
+				autoPlay: true,
+				aspectRatio: 16 / 9,
+				autoPlayCurve: Curves.fastOutSlowIn,
+				enableInfiniteScroll: true,
+				autoPlayAnimationDuration: Duration(milliseconds: 800),
+				viewportFraction: 0.8,
+			),
+		),
+		],
+	),
 
-
-        ]),
-      ),
+	),
     );
-
-    // This trailing comma makes auto-formatting nicer for build methods.
-  }
 }
+}
+
+
+
+     

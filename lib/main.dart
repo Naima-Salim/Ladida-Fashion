@@ -54,10 +54,19 @@ class HomeScreen extends StatelessWidget {
           height: double.maxFinite,
           child: ListView(
             children: <Widget>[
+        Container(
+				margin: EdgeInsets.all(6.0),
+				decoration: BoxDecoration(
+					borderRadius: BorderRadius.circular(8.0),
+					image: DecorationImage(
+					image: NetworkImage("https://images.pexels.com/photos/8657665/pexels-photo-8657665.jpeg?auto=compress&cs=tinysrgb&w=600"),
+					fit: BoxFit.cover,
+					),
+				),
+				),
               Container(
               width: double.infinity, // Make the button take full width
-                padding: const EdgeInsets.fromLTRB(30, 60, 30, 0),
-                      child: Positioned(
+                
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                             padding: const EdgeInsets.fromLTRB(30, 20, 30, 20),
@@ -81,11 +90,11 @@ class HomeScreen extends StatelessWidget {
                             );
                           },
                         ),
-                      ),
+                      
                     ),
                     Container(
                       // margin: EdgeInsets.all(100.0),
-                      padding: const EdgeInsets.fromLTRB(30, 20, 30, 20),
+                      
                       child: Positioned(
                         bottom: 100,
                         child: OutlinedButton(
