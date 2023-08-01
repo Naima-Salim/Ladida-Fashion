@@ -62,6 +62,7 @@ class _SignUpState extends State<SignUp> {
         style: TextStyle(fontSize: 30.0, color: Color.fromARGB(255, 181, 123, 42)),
       ),
       Padding(padding: const EdgeInsets.all(20.0)),
+
       TextFormField(
         decoration: const InputDecoration(
             // padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
@@ -74,6 +75,7 @@ class _SignUpState extends State<SignUp> {
           _name = val;
         },
       ),
+      
       Padding(padding: const EdgeInsets.all(20.0)),
       TextFormField(
         decoration: const InputDecoration(
@@ -142,7 +144,7 @@ class _SignUpState extends State<SignUp> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const Login()),
+                      MaterialPageRoute(builder: (context) => DetailsForm()),
                     );
                   },
                 )

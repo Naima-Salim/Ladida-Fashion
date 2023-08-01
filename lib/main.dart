@@ -36,8 +36,10 @@ class SplashScreenState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
-      child: Image.network('https://images.pexels.com/photos/2112651/pexels-photo-2112651.jpeg?auto=compress&cs=tinysrgb&w=600',
-      fit: BoxFit.fill,), 
+      child: Image.network(
+        'https://images.pexels.com/photos/2112651/pexels-photo-2112651.jpeg?auto=compress&cs=tinysrgb&w=600',
+        fit: BoxFit.fill,
+      ),
     );
   }
 }
@@ -46,30 +48,27 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-       color: Color.fromARGB(255, 221, 204, 142),  
-        debugShowCheckedModeBanner: false,
-        home: Container(   
-          padding: const EdgeInsets.all(0),
-          width: double.maxFinite,
-          height: double.maxFinite,
-          child: ListView(
-            children: <Widget>[
+      home: Scaffold(
+         body: Container(
+        padding: const EdgeInsets.all(0),
+        width: double.maxFinite,
+        height: double.maxFinite,
+        child: ListView(children: <Widget>[
+           Container(
+            padding: const EdgeInsets.all(0),
+            margin: EdgeInsets.all(6.0),
+            child:Image.network("https://image.similarpng.com/very-thumbnail/2021/07/Beautiful-woman-illustration-on-transparent-background-PNG.png"), 
+        ),
+
+
         Container(
-				margin: EdgeInsets.all(6.0),
-				decoration: BoxDecoration(
-					borderRadius: BorderRadius.circular(8.0),
-					image: DecorationImage(
-					image: NetworkImage("https://images.pexels.com/photos/8657665/pexels-photo-8657665.jpeg?auto=compress&cs=tinysrgb&w=600"),
-					fit: BoxFit.cover,
-					),
-				),
-				),
-              Container(
+          margin: EdgeInsets.all(20),
               width: double.infinity, // Make the button take full width
                 
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            padding: const EdgeInsets.fromLTRB(30, 20, 30, 20),
+                            padding: const EdgeInsets.fromLTRB(30, 10, 30, 10),
+                            
                             primary: Color((0xFFFFDBAD)),
 
                             // side: BorderSide(color: Color(0xFFFFDBAD)), // Background color
@@ -92,41 +91,12 @@ class HomeScreen extends StatelessWidget {
                         ),
                       
                     ),
-                    Container(
-                      // margin: EdgeInsets.all(100.0),
-                      
-                      child: Positioned(
-                        bottom: 100,
-                        child: OutlinedButton(
-                          style: OutlinedButton.styleFrom(
-                            padding: const EdgeInsets.fromLTRB(30, 20, 30, 20),
-                            primary: Color((0xFFFFDBAD)),
-
-                            side: BorderSide(
-                                color: Color(0xFFFFDBAD)), // Background color
-                          ),
-                          child: Text(
-                            'Get Started',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                              fontFamily: 'Inter',
-                              fontWeight: FontWeight.w300,
-                            ),
-                          ),
-                           onPressed: () {
-                            Navigator.push(
-                              // FFCD82
-                              context,
-                              MaterialPageRoute(builder: (context) => Login()),
-                            );
-                          },
-                        ),
-                      ),
-                    ),     
-            ]  
-              ),
-          ),
-        );
+        
+        ]
+        ),
+         ),
+      
+     ),
+    );
   }
 }
