@@ -44,6 +44,7 @@ dev_dependencies:
   fluttertoast: ^8.2.2
   splashscreen: ^1.2.0
   flutter_bloc: ^7.0.0
+  # libphonenumber: ^2.0.2
   
 
 

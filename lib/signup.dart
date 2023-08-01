@@ -2,135 +2,139 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:ladida_fashion/home.dart';
 import 'package:ladida_fashion/login.dart';
+import 'package:ladida_fashion/main.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-void main() => runApp(const SignUp());
 
 class SignUp extends StatefulWidget {
-  const SignUp({Key? key}) : super(key: key);
-
   @override
   _SignUpState createState() => _SignUpState();
 }
 
 class _SignUpState extends State<SignUp> {
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  AutovalidateMode _autoValidate = AutovalidateMode.disabled;
-  String? _name;
+  final _formKey = GlobalKey<FormState>();
+  TextEditingController _nameController = TextEditingController();
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _phoneController = TextEditingController();
+    String? _name;
   String? _mobile;
   String? _email;
 
-  void _validateInputs() {
-    if (_formKey.currentState!.validate()) {
-      _formKey.currentState!.save();
-      print('Username: $_name');
-      print('Mobile: $_mobile');
-      print('Email: $_email');
-    } else {
-      setState(() {
-        _autoValidate = AutovalidateMode.always;
-      });
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      color: Color.fromARGB(255, 221, 204, 142), 
-      home: Scaffold(
-        body: SingleChildScrollView(
-          child: Container(
-            margin: const EdgeInsets.all(30.0),
-            padding: const EdgeInsets.all(20.0),
-            child: Form(
-              key: _formKey,
-              autovalidateMode: _autoValidate,
-              child: formUI(),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Form(
+          key: _formKey,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Padding(padding: const EdgeInsets.all(20.0)),
+              SizedBox(
+                height: 0.04,
+              ),
+              Text(
+                'Sign Up',
+                style: TextStyle(
+                    fontSize: 30.0, color: Color.fromARGB(255, 181, 123, 42)),
+              ),
+              Padding(padding: const EdgeInsets.all(20.0)),
+              TextFormField(
+                decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    contentPadding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                    labelText: 'Enter your name'),
+                keyboardType: TextInputType.name,
+                onSaved: (String? val) {
+                  _nameController = TextEditingController();
+                  ;
+                },
+                controller: _nameController,
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Please enter your name';
+                  }
+                  return null;
+                },
+              ),
+              Padding(padding: const EdgeInsets.all(20.0)),
+              TextFormField(
+                decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    contentPadding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                    labelText: 'Enter your email'),
+                keyboardType: TextInputType.emailAddress,
+                onSaved: (String? val) {
+                  _emailController = TextEditingController();
+                  ;
+                },
+                controller: _emailController,
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Please enter your email';
+                  } else if (!isValidEmail(value)) {
+                    return 'Please enter a valid email address';
+                  }
+                  return null;
+                },
+              ),
+               Padding(padding: const EdgeInsets.all(20.0)),
 
-  Widget formUI() {
-    return Column(children: <Widget>[
-      SizedBox(
-        height: 0.04,
-      ),
-      Text(
-        'Sign Up',
-        style: TextStyle(fontSize: 30.0, color: Color.fromARGB(255, 181, 123, 42)),
-      ),
-      Padding(padding: const EdgeInsets.all(20.0)),
+              TextFormField(
+                decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    contentPadding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                    labelText: 'Mobile number'),
+                keyboardType: TextInputType.phone,
+                controller: _phoneController,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Phone number is required';
+                  }
+                  return null;
+                },
+              ),
 
-      TextFormField(
-        decoration: const InputDecoration(
-            // padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-            border: OutlineInputBorder(),
-            contentPadding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-            labelText: 'Name'),
-        keyboardType: TextInputType.text,
-        validator: validateName,
-        onSaved: (String? val) {
-          _name = val;
-        },
-      ),
-      
-      Padding(padding: const EdgeInsets.all(20.0)),
-      TextFormField(
-        decoration: const InputDecoration(
-            border: OutlineInputBorder(),
-            contentPadding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-            labelText: 'Mobile number'),
-        keyboardType: TextInputType.phone,
-        validator: validateMobile,
-        onSaved: (String? val) {
-          _mobile = val;
-        },
-      ),
-      Padding(padding: const EdgeInsets.all(20.0)),
-      TextFormField(
-        decoration: const InputDecoration(
-            border: OutlineInputBorder(), labelText: 'Email address'),
-        keyboardType: TextInputType.emailAddress,
-        validator: validateEmail,
-        onSaved: (String? val) {
-          _email = val;
-        },
-      ),
-
-      Padding(padding: const EdgeInsets.all(20.0)),
-      const SizedBox(
-        height: 10.0,
-      ),
-             Container(
-                  width: 500,
-                  height: 90,
-                  padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
+              Padding(padding: const EdgeInsets.all(20.0)),
+              const SizedBox(
+                height: 10.0,
+              ),
+              Container(
+                width: 500,
+                height: 90,
+                padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
                 child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(  
-                            primary: Color((0xFFFFDBAD)),
+                  style: ElevatedButton.styleFrom(
+                    primary: Color((0xFFFFDBAD)),
 
-                            // side: BorderSide(color: Color(0xFFFFDBAD)), // Background color
-                          ),
-                          child: Text(
-                            'Sign Up',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 20,
-                              fontFamily: 'Inter',
-                              fontWeight: FontWeight.w300,
-                            ),
-                          ),
-                        onPressed: () {
-                            _validateInputs();
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) =>const MyApp()),);
-          
-        },
-                        ),),
-                        Row(
+                    // side: BorderSide(color: Color(0xFFFFDBAD)), // Background color
+                  ),
+                  child: Text(
+                    'Sign Up',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                      fontFamily: 'Inter',
+                      fontWeight: FontWeight.w300,
+                    ),
+                  ),
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      // Form is valid, print details and navigate to the next page
+                      printDetails();
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => HomeScreen(),
+                        ),
+                      );
+                    }
+                  },
+                ),
+              ),
+                          Row(
               children: <Widget>[
                 const Text('Already have an account?'),
                 TextButton(
@@ -144,15 +148,42 @@ class _SignUpState extends State<SignUp> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => DetailsForm()),
+                      MaterialPageRoute(builder: (context) =>  Login()),
                     );
                   },
                 )
               ],
               mainAxisAlignment: MainAxisAlignment.center,
             ),
-    ]);
+            ],
+          ),
+        ),
+      ),
+    );
   }
+
+  void printDetails() {
+    final name = _nameController.text;
+    final email = _emailController.text;
+    final phone = _phoneController.text.characters;
+    print('Phone: $phone');
+    print('Name: $name');
+    print('Email: $email');
+  }
+
+  bool isValidEmail(String email) {
+    return email.contains('@');
+    // You can implement a proper email validation logic here
+  }
+
+  bool isValidPhoneNumber(Characters phone) {
+    return phone.contains('1234');
+  }
+}
+
+
+            
+   
 
   String? validateName(String? value) {
     if (value!.isEmpty) {
@@ -189,31 +220,5 @@ class _SignUpState extends State<SignUp> {
       return null;
     }
   }
-}
 
-// class HomePage extends StatelessWidget {
-//   const HomePage({super.key, required this.email});
 
-//   final String email;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//         appBar: AppBar(
-//           title: const Text('Home Page'),
-//         ),
-//         body: Column(
-//           children: [
-//             Text(email),
-//             Center(
-//               child: ElevatedButton(
-//                 onPressed: () {
-//                   Navigator.pop(context);
-//                 },
-//                 child: const Text("Go back!"),
-//               ),
-//             ),
-//           ],
-//         ));
-//   }
-// }

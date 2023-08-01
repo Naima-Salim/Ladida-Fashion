@@ -58,3 +58,29 @@
 //                         ),
 //                       ),
 //                     ),     
+
+
+
+    // TextFormField(
+                  
+    //     decoration: const InputDecoration(
+    //         border: OutlineInputBorder(),
+    //         contentPadding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+    //         labelText: 'Mobile number'),
+    //     keyboardType: TextInputType.phone,
+        
+    //     onSaved: (String? val) {
+    //        _emailController = TextEditingController();;
+    //     },
+
+    //            controller: _emailController,
+    //             validator: (value) {
+    //               if (value!.isEmpty) {
+    //                 return 'Please enter your email';
+    //               } else if (!isValidEmail(value)) {
+    //                 return 'Please enter a valid email address';
+    //               }
+    //               return null;
+    //             },
+                
+    //           ),
